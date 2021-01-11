@@ -39,7 +39,11 @@ fun findUserRequest(name: String, req: Int): MutableList<String> {
         if (name.equals(boss, ignoreCase = true) && req == 1) {
             for (s in children) {
                 childrenList.add(s)
-                findUserRequest(s,req)
+//                findUserRequest(s,req)
+//                Om vi vill hitta barn barn barn osv..till sista barn,
+//                 då kan vi använda det här metoden
+//                **Direkta mappningar över flera nivåer är inte tillåtna
+//                 (PGA det har jag bort kommenterat det)**
             }
             return childrenList
         } else if (req == 2) {
@@ -102,7 +106,7 @@ fun userChoice() {
 fun showMessage(userChoice: List<String>, title: String) {
     val output = StringBuilder()
     for (s in userChoice) output.append(s).append("\n")
-    showMessageDialog(null, output.toString(), title,1)
+    showMessageDialog(null, output.toString(), title, 1)
 }
 
 fun showInput(title: String): String {
