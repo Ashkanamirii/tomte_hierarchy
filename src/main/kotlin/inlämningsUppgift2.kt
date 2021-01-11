@@ -39,6 +39,7 @@ fun findUserRequest(name: String, req: Int): MutableList<String> {
         if (name.equals(boss, ignoreCase = true) && req == 1) {
             for (s in children) {
                 childrenList.add(s)
+                findUserRequest(s,req)
             }
             return childrenList
         } else if (req == 2) {
@@ -85,8 +86,7 @@ fun userChoice() {
             if (result.size == 0)
                 showMessage(
                     listOf(
-                        "Either you have entered incorrectly " +
-                                "or it has no information at our place, Please try again"
+                        "Either you have entered incorrectly or it has no information at our place, Please try again"
                     ), "ERROR"
                 )
             else {
@@ -102,7 +102,7 @@ fun userChoice() {
 fun showMessage(userChoice: List<String>, title: String) {
     val output = StringBuilder()
     for (s in userChoice) output.append(s).append("\n")
-    showMessageDialog(null, output.toString(), title, JOptionPane.ERROR_MESSAGE)
+    showMessageDialog(null, output.toString(), title,1)
 }
 
 fun showInput(title: String): String {
