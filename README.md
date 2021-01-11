@@ -1,6 +1,6 @@
 # tomte_hierarchy
 kotlin
-
+https://github.com/Ashkanamirii/tomte_hierarchy/blob/master/src/main/resources/Tomtarnas%20chefs-hierarki.pdf
 Inlämningsuppgift 2 - Rekursion
 Tomtarna på Nordpolen har en strikt chefs-hierarki:
 Högsta chefen för allt är "Tomten"
