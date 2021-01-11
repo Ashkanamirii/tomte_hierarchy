@@ -1,0 +1,7 @@
+Tomten,Glader,Butter
+Glader,Tröger,Trötter,Blyger
+Trötter,Skumtomten
+Skumtomten,Dammråttan
+Butter,Rådjuret,Nyckelpigan,Haren,Räven
+Räven,Gråsuggan,Myran
+Myran,Bladlusen
