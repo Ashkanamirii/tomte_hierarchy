@@ -2,9 +2,7 @@ import java.io.File
 import java.io.InputStream
 import java.util.*
 import javax.swing.ImageIcon
-import javax.swing.JOptionPane
-import javax.swing.JOptionPane.showInputDialog
-import javax.swing.JOptionPane.showMessageDialog
+import javax.swing.JOptionPane.*
 import kotlin.system.exitProcess
 
 
@@ -22,12 +20,10 @@ private val childrenList: MutableList<String> = mutableListOf()
 private val tomtenImage = ImageIcon(
     "D:\\New folder\\E&F\\fuktionalProgramming\\tomte_hierarchy\\src\\main\\resources\\unnamed.jpg"
 )
-private var choice = arrayOf("Bosses", "Sub bosses")
+private val choice = arrayOf("Bosses", "Sub bosses")
 
 fun main() {
     userChoice()
-    //findUserRequest("räven",1)?.forEach { e -> println(e) }
-    //findUserRequest("Dammråttan", 2).forEach { e -> println(e) }
 }
 
 // Recursive method
@@ -39,11 +35,7 @@ fun findUserRequest(name: String, req: Int): MutableList<String> {
         if (name.equals(boss, ignoreCase = true) && req == 1) {
             for (s in children) {
                 childrenList.add(s)
-//                findUserRequest(s,req)
-//                Om vi vill hitta barn barn barn osv..till sista barn,
-//                 då kan vi använda det här metoden
-//                **Direkta mappningar över flera nivåer är inte tillåtna
-//                 (PGA det har jag bort kommenterat det)**
+                findUserRequest(s, req)
             }
             return childrenList
         } else if (req == 2) {
@@ -64,7 +56,7 @@ fun userChoice() {
         val userInput = showInputDialog(
             null,
             "Chose one of them that you want to get information about:",
-            "SantaClausHierarchy", JOptionPane.QUESTION_MESSAGE, tomtenImage, choice, choice[0]
+            "SantaClausHierarchy", QUESTION_MESSAGE, tomtenImage, choice, choice[0]
         )
         if (userInput == null) {
             showMessage(Collections.singletonList("GOOD BYE"), "BYE")
@@ -110,15 +102,13 @@ fun showMessage(userChoice: List<String>, title: String) {
 }
 
 fun showInput(title: String): String {
-    var name = showInputDialog(
+    val name = showInputDialog(
         null,
         "Enter the name, to get the $title: ",
-        title, JOptionPane.INFORMATION_MESSAGE
+        title, INFORMATION_MESSAGE
     )
-    return if (name != null && name.isNotBlank() && name.isNotEmpty()) {
-        name = name.trim { it <= ' ' }
-        name.substring(0, 1).toUpperCase() + name.substring(1)
-    } else {
+    return if (name != null && name.isNotBlank() && name.isNotEmpty()) name.trim()
+    else {
         showMessage(listOf("GOOD BYE"), "BYE")
         exitProcess(0)
     }
@@ -131,7 +121,5 @@ fun readFile(): MutableList<String> {
     ).inputStream()
     val lineList = mutableListOf<String>()
     inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
-//    lineList.forEach{println(it)}  Just for test!
-//    println(lineList.size) Just for test!
     return lineList
 }
