@@ -117,7 +117,7 @@ fun showInput(title: String): String {
 fun readFile(): MutableList<String> {
     val inputStream: InputStream = File(
         "D:\\New folder\\E&F\\fuktionalProgramming" +
-                "\\tomte_hierarchy\\src\\main\\resources\\santaClausHierarchy.txt"
+                "\\tomte_hierarchy\\src\\main\\resources\\Tomtarnas chefs-hierarchy.txt"
     ).inputStream()
     val lineList = mutableListOf<String>()
     inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
